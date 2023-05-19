@@ -8,12 +8,9 @@ body{
 p{
     color: #3E3A39;
 }
-#card dt{
-    color: #E995AD;;
-    font-weight: lighter;
-}
-#card dd{
-    font-weight: lighter;
+
+.pink{
+    color: #E995AD;
 }
 .title-s{
     padding: 3px 10px;
@@ -45,6 +42,10 @@ p{
 }
 .title-d{
     border-left: solid 1px black;
+    padding: 0px 20px;
+    margin: 10px 0px;
+}
+.title-dl{
     padding: 0px 20px;
     margin: 10px 0px;
 }
