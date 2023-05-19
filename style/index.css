@@ -8,7 +8,9 @@ body{
 p{
     color: #3E3A39;
 }
-
+.note-a{
+    text-decoration: none;
+}
 .pink{
     color: #E995AD;
 }
@@ -66,6 +68,13 @@ p{
     color: #E995AD;
     font-size: smaller;
 }
-.title-h{
+.bar-link a{
+    text-decoration: none;
+}
+.bar-link a:hover p{ 
     color: #E995AD;
+}
+.bar-link p{
+    color: #a2a2a2;
+    margin: 10px 0px;
 }

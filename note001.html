@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仕昆的网站</title>
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <div id="Header">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="#">
+                        <img src="./img/web.jpg" width="40px" height="auto" alt="">
+                        <span class="pink">个人网站</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                        <div class="navbar-nav ">
+                            <a class="nav-link" aria-current="page" href="./index.html">主页</a>
+                            <a class="nav-link active" href="#">我的笔记</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="container">
+            <div class="row">
+                <img src="./img/head01.jpg" alt="">
+            </div>
+        </div>
+        <div class="container text-center  py-3 border-bottom">
+            <p class="display-4" style="color:#E995AD;">Ajax技术的历史</p>
+        </div>
+        <div class="container pt-5">
+            <div class="row fw-light">
+                <div class="row col-lg-9">
+                    <div class="border-bottom mb-3">
+                        <h3>问题的提出</h3>
+                    </div>
+                    <p>页面（运行于本地浏览器）和远端服务器之间的通讯基本是一锤子买卖，两者的交互一般遵循一问一答的形式。浏览器请求某个url，服务器就返回相关的资源，这些资源可以是页面，也可以是图像等静态资源。如下图所示：</p>
+                    <img src="./img/note001/m_01.png" alt="">
+                    <p>这一过程中，浏览器的每一个请求，服务器都会返回一张新的页面，浏览器会切换到这张新页面，传统的B/S交互模式通过这种方式来进行。</p>
+                    <p>分析一下这个流程，有这么几个问题：</p>
+                    <div>
+                        <ol>
+                            <li>页面由服务器生成，如果是静态页面还好，假如页面是动态生成的，压力都在服务端。</li>
+                            <li>js的行为属于本地的自娱自乐，并不会真正影响服务器的状态。</li>
+                            <li>只能通过表单影响服务器的状态，而表单提交意味着页面刷新，js的生命周期结束。</li>
+                            <li>页面刷新处于同步状态，如果网络出现问题，你只能等。</li>
+                        </ol>
+                    </div>
+                    <p>如果说1，4还属于可以接受的范围，2、3则是目前前端全面转向Ajax技术的最根本性原因。简单的说，<mark>如果你想向服务器传递消息，你就只能放弃你当前的所有js状态，这给前端开发带来了巨大的麻烦。</mark></p>
+                    <p>我们设想一个环境，你打开一个网页游戏，前端的js记录下了你游玩的所有状态。此时你希望保存数据，你只能通过表单发起一次请求，服务器随即返回一个页面，浏览器跳转到新页面上。<mark>此时旧页面销毁，开始跑新页面，旧页面js的数据是无法传递到新页面的。</mark>因为js本质上是页面上的脚本，他的生命周期跟随页面的结束而结束。</p>
+                    <img src="./img/note001/m_02.png" alt="">
+                    <div class="border-bottom my-3">
+                        <h3>问题的解决</h3>
+                    </div>
+                    <p>面对这个问题，我们有两种解决思路：</p>
+                    <div>
+                        <ol>
+                            <li>把页面（1）的所有状态都上传服务器，并在生成页面的时候发下来，由页面（2）的js解析继承。</li>
+                            <li>让js拥有可以<mark>直接向服务器发送请求、接收数据而不刷新页面的能力。</mark></li>
+                        </ol>
+                    </div>
+                    <p>显然正常人都会选2，因此2005年，一篇文章横空出世，带来的Ajax：</p>
+                    <a href="https://courses.cs.washington.edu/courses/cse490h/07sp/readings/ajax_adaptive_path.pdf"class="pink" >Ajax: A New Approach to Web Applications</a>
+                    <p>Ajax是Asynchronouse JavaScript + XML的缩写，这里要关注的是以下几点：</p>
+                    <div>
+                        <ol>
+                            <li>过程是<mark>异步</mark>的（也就是首字母大写A的意义）。</li>
+                            <li>数据请求通过XMLHttpRequest对象来实现。</li>
+                            <li>JavaScript在这个过程中处于核心地位，由他来获取数据，并动态改变页面的内容（DOM）。</li>
+                            <li>虽然设想之初，数据载荷是XML和CSS，但Ajax后来的实现并不依赖于这两者，而是更多依赖于json。</li>
+                        </ol>
+                    </div>
+                    <div class="border-bottom my-3">
+                        <h3>XMLHttpRequest对象</h3>
+                    </div>
+                    <p>理论已经就位，现在就看谁先搞出来这个XMLHttpRequest对象了。啪的一下，很快啊，MS就在IE5中引实现了这个功能，引入了XHR对象。是的你没看错，是IE第一个实现的Ajax，通过引入一个新的ActiveX对象来实现。但这个过程很繁琐，而且不同版本的IE还有不同的XHR版本。</p>
+                    <p>从IE7开始，IE正式支持原生的XHR对象，不再依赖于ActiveX（也就不依赖于Windows），之后的主流浏览器都开始支持原生XHR，并最终被W3C标准化，成为JavaScript的标准能力。</p>
+                    <div class="border-bottom my-3">
+                        <h3>Ajax请求库axios</h3>
+                    </div>
+                    <p>原生的XHR使用起来很麻烦，此外网络的远程交互属性需要更为复杂精细的错误和异常处理能力，因此多数情况下我们会使用封装好的库来进行Ajax请求。<code>axios</code>就是这样一个轻量级的请求库。</p>
+                    <div class="border-bottom my-3">
+                        <h4>引入axios库</h4>
+                    </div>
+                    <p>axios可以通过<code>npm/yarn</code>等nodejs包管理工具来安装，这种用法一般是针对webpack项目的，但对于我们初学者来说，可以先尝试直接引入，直接使用。</p>
+                    <p>我们可以通过CDN在线引入：</p>
+                    <pre><code>
+    &lt;script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">&lt;/script> 
+                    </code></pre>
+                    <div class="border-bottom my-3">
+                        <h4>axios调用</h4>
+                    </div>
+                    <p>现在我们来试着发送一段请求，首先我们在根目录下放入0.json、1.json...5.json，这6个文件，作为请求的对象，里面的数据类似于：</p>
+                    <pre><code>
+    [{
+        "id": 1,
+        "name": "东野圭吾：白夜行（2017版）",
+        "author": "[日]东野圭吾",
+        "price": 59.6,
+        "img": "image/1.jpg",
+        "category": "侦探/悬疑/推理"
+    }, 
+    ...
+    ]
+                    </code></pre>
+                    <p>json数据就是js里的数据类型，一般组织成数组或者对象的形式。0.json里有5个对象数据，1.json~5.json里各有一个对象。</p> 
+                    <p>我们先请求0.json看一下：</p>
+                    <pre><code>
+    window.onload = function(){
+        axios.get("0.json")
+            .then(function(resp){
+                console.log(resp);
+            })
+            .catch(function(err){
+                console.log(err)
+            })
+    }
+                    </code></pre>
+                    <div>
+                        <ol>
+                            <li><code>axios.get</code>表示发送<code>GET</code>请求，参数<code>0.json</code>为请求的url地址。</li>
+                            <li><code>then</code>用来告诉axios请求成功后，应该如何做，此时要传入一个回调函数，带一个参数。</li>
+                            <li><code>axios.get(..).then(..)</code>这种调用方式在javascript里很普遍，称为级联函数，想想为什么可以这样做？</li>
+                            <li><code>catch</code>告诉axios请求失败后应该如何处理，也要传入一个回调函数，你可以给一个错误的url试试结果。</li>
+                        </ol>
+                    </div>
+                    <div class="border-bottom my-3">
+                        <h3>请求数据的获取</h3>
+                    </div>
+                    <p>请求结果会放在回调函数的<code>resp</code>参数里，我们在终端里能看到它是什么：</p>
+                    <img src="./img/note001/01.png" alt="">
+                    <p>其中我们比较关心的是以下几个字段：</p>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>字段</th>
+                                <th>意义</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>data</td>
+                                <td>具体返回的数据载荷</td>
+                            </tr>
+                            <tr>
+                                <td>headers</td>
+                                <td>http请求的返回头</td>
+                            </tr>
+                            <tr>
+                                <td>status</td>
+                                <td>请求的返回代码，200是请求成功</td>
+                            </tr>
+                            <tr>
+                                <td>statusText</td>
+                                <td>请求的返回信息</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>如果请求成功，可以通过<code>resp.data</code>读出返回的数据，我们直接打印一下：</p>
+                    <pre><code>
+    window.onload = function(){
+        axios.get("0.json")
+        .then(function(resp){
+            for( let i=0; i&lt;resp.data.length; ++i){
+                console.log(resp.data[i]);
+            }
+        })
+    }
+                    </code></pre>
+                    <p>可以看到输出了全部五条记录。</p>
+                </div>
+                <div class="col-lg-3  d-none d-lg-block">
+                    <div class="sticky-top ps-3 bar">
+                        <p class="fw-bold">此页内容</p>
+                        <div class="border-start ps-3 bar-link">
+                            <a href=""><p>问题的提出</p></a>
+                            <a href=""><p>问题的解决</p></a>
+                            <a href=""><p>XMLHttpRequest对象</p></a>
+                            <a href=""><p>Ajax请求库axios</p></a>
+                            <a href=""><p>引入axios库</p></a>
+                            <a href=""><p>axios调用</p></a>
+                            <a href=""><p>请求数据的获取</p></a>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class=" col-3  text-center section-link"><a href="">MORE</a></div>
+            </div>
+
+        </div>
+        <div id="footer " class="mt-5">
+            <div class="text-center footer-block py-3">
+                <p>Copyright © 2023 陈仕昆 All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    	// 开启代码高亮
+        hljs.initHighlightingOnLoad();
+        // 行号显示
+        hljs.initLineNumbersOnLoad ({ singleLine:true });
+    </script>
+</body>
+
+</html>
