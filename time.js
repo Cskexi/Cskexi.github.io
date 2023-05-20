@@ -4,7 +4,7 @@ var h = Math.ceil(Math.random()*23);
 var m = Math.ceil(Math.random()*59);
 var s = Math.ceil(Math.random()*59);
 var countdown = document.getElementById("countdown");
-var v = 1;
+var v = -1;
 var flag = 1;
 timemove();
 function startCountdown(){
