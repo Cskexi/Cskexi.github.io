@@ -16,8 +16,8 @@
             <nav class="navbar navbar-expand-lg">
                 <div class="container">
                     <a class="navbar-brand" href="#">
-                        <img src="./img/web.jpg" width="40px" height="auto" alt="">
-                        <span class="pink">个人网站</span>
+                        <img src="./img/web.jpg" width="40px" height="auto" alt="" class="rounded" >
+                        <span class="fw-light">Csk'Website</span>
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
@@ -25,9 +25,10 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                        <div class="navbar-nav ">
-                            <a class="nav-link" aria-current="page" href="./index.html">主页</a>
-                            <a class="nav-link active" href="#">我的笔记</a>
+                        <div class="navbar-nav fw-light">
+                            <a class="nav-link" aria-current="page" href="./index.html">HOME</a>
+                            <a class="nav-link active" href="./notes.html">NOTES</a>
+                            <a class="nav-link" href="./time.html">TIMER</a>
                         </div>
                     </div>
                 </div>
@@ -39,12 +40,12 @@
             </div>
         </div>
         <div class="container text-center  py-3 border-bottom">
-            <p class="display-4" style="color:#E995AD;">Ajax技术的历史</p>
+            <p class="display-4 pink">Ajax技术的历史</p>
         </div>
         <div class="container pt-5">
             <div class="row fw-light">
                 <div class="row col-lg-9">
-                    <div class="border-bottom mb-3">
+                    <div class="border-bottom mb-3" id="n1t1">
                         <h3>问题的提出</h3>
                     </div>
                     <p>页面（运行于本地浏览器）和远端服务器之间的通讯基本是一锤子买卖，两者的交互一般遵循一问一答的形式。浏览器请求某个url，服务器就返回相关的资源，这些资源可以是页面，也可以是图像等静态资源。如下图所示：</p>
@@ -62,7 +63,7 @@
                     <p>如果说1，4还属于可以接受的范围，2、3则是目前前端全面转向Ajax技术的最根本性原因。简单的说，<mark>如果你想向服务器传递消息，你就只能放弃你当前的所有js状态，这给前端开发带来了巨大的麻烦。</mark></p>
                     <p>我们设想一个环境，你打开一个网页游戏，前端的js记录下了你游玩的所有状态。此时你希望保存数据，你只能通过表单发起一次请求，服务器随即返回一个页面，浏览器跳转到新页面上。<mark>此时旧页面销毁，开始跑新页面，旧页面js的数据是无法传递到新页面的。</mark>因为js本质上是页面上的脚本，他的生命周期跟随页面的结束而结束。</p>
                     <img src="./img/note001/m_02.png" alt="">
-                    <div class="border-bottom my-3">
+                    <div class="border-bottom my-3" id="n1t2">
                         <h3>问题的解决</h3>
                     </div>
                     <p>面对这个问题，我们有两种解决思路：</p>
@@ -83,16 +84,16 @@
                             <li>虽然设想之初，数据载荷是XML和CSS，但Ajax后来的实现并不依赖于这两者，而是更多依赖于json。</li>
                         </ol>
                     </div>
-                    <div class="border-bottom my-3">
+                    <div class="border-bottom my-3" id="n1t3">
                         <h3>XMLHttpRequest对象</h3>
                     </div>
                     <p>理论已经就位，现在就看谁先搞出来这个XMLHttpRequest对象了。啪的一下，很快啊，MS就在IE5中引实现了这个功能，引入了XHR对象。是的你没看错，是IE第一个实现的Ajax，通过引入一个新的ActiveX对象来实现。但这个过程很繁琐，而且不同版本的IE还有不同的XHR版本。</p>
                     <p>从IE7开始，IE正式支持原生的XHR对象，不再依赖于ActiveX（也就不依赖于Windows），之后的主流浏览器都开始支持原生XHR，并最终被W3C标准化，成为JavaScript的标准能力。</p>
-                    <div class="border-bottom my-3">
+                    <div class="border-bottom my-3" id="n1t4">
                         <h3>Ajax请求库axios</h3>
                     </div>
                     <p>原生的XHR使用起来很麻烦，此外网络的远程交互属性需要更为复杂精细的错误和异常处理能力，因此多数情况下我们会使用封装好的库来进行Ajax请求。<code>axios</code>就是这样一个轻量级的请求库。</p>
-                    <div class="border-bottom my-3">
+                    <div class="border-bottom my-3" id="n1t5">
                         <h4>引入axios库</h4>
                     </div>
                     <p>axios可以通过<code>npm/yarn</code>等nodejs包管理工具来安装，这种用法一般是针对webpack项目的，但对于我们初学者来说，可以先尝试直接引入，直接使用。</p>
@@ -100,7 +101,7 @@
                     <pre><code>
     &lt;script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">&lt;/script> 
                     </code></pre>
-                    <div class="border-bottom my-3">
+                    <div class="border-bottom my-3"id="n1t6">
                         <h4>axios调用</h4>
                     </div>
                     <p>现在我们来试着发送一段请求，首先我们在根目录下放入0.json、1.json...5.json，这6个文件，作为请求的对象，里面的数据类似于：</p>
@@ -137,7 +138,7 @@
                             <li><code>catch</code>告诉axios请求失败后应该如何处理，也要传入一个回调函数，你可以给一个错误的url试试结果。</li>
                         </ol>
                     </div>
-                    <div class="border-bottom my-3">
+                    <div class="border-bottom my-3" id="n1t7">
                         <h3>请求数据的获取</h3>
                     </div>
                     <p>请求结果会放在回调函数的<code>resp</code>参数里，我们在终端里能看到它是什么：</p>
@@ -186,20 +187,20 @@
                     <div class="sticky-top ps-3 bar">
                         <p class="fw-bold">此页内容</p>
                         <div class="border-start ps-3 bar-link">
-                            <a href=""><p>问题的提出</p></a>
-                            <a href=""><p>问题的解决</p></a>
-                            <a href=""><p>XMLHttpRequest对象</p></a>
-                            <a href=""><p>Ajax请求库axios</p></a>
-                            <a href=""><p>引入axios库</p></a>
-                            <a href=""><p>axios调用</p></a>
-                            <a href=""><p>请求数据的获取</p></a>
+                            <a href="#n1t1"><p>问题的提出</p></a>
+                            <a href="#n1t2"><p>问题的解决</p></a>
+                            <a href="#n1t3"><p>XMLHttpRequest对象</p></a>
+                            <a href="#n1t4"><p>Ajax请求库axios</p></a>
+                            <a href="#n1t5"><p>引入axios库</p></a>
+                            <a href="#n1t6"><p>axios调用</p></a>
+                            <a href="#n1t7"><p>请求数据的获取</p></a>
                         </div>
                     </div>
                    
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class=" col-3  text-center section-link"><a href="">MORE</a></div>
+                <div class=" col-3  text-center section-link"><a href="./notes.html">MORE</a></div>
             </div>
 
         </div>

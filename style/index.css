@@ -12,7 +12,7 @@ p{
     text-decoration: none;
 }
 .pink{
-    color: #E995AD;
+    color: #AA1D45;
 }
 .title-s{
     padding: 3px 10px;
@@ -40,7 +40,7 @@ p{
 .section-link{
     padding: 10px;
     width: 100px;
-    border-bottom: solid 1px #f19db5;
+    border-bottom: solid 1px #AA1D45;
 }
 .title-d{
     border-left: solid 1px black;
@@ -58,21 +58,21 @@ p{
 }
 .footer-block{
     border-top: #aaaaaa solid 1px;
-    background-color: #e5e5e5;
+    background-color: #E995AD;
 }
 .img-note{
     width: 100%;
     height: auto;
 }
 .date{
-    color: #E995AD;
+    color: #AA1D45;
     font-size: smaller;
 }
 .bar-link a{
     text-decoration: none;
 }
 .bar-link a:hover p{ 
-    color: #E995AD;
+    color: #AA1D45;
 }
 .bar-link p{
     color: #a2a2a2;
